@@ -1,0 +1,6 @@
+{application,parse_utils,
+             [{description,"Erlang Abstract Form parsing functions"},
+              {vsn,"1.0.0"},
+              {licenses,["MIT"]},
+              {links,[{"GitHub","https://github.com/relayr/erl-parse-utils"}]},
+              {applications,[kernel,stdlib]}]}.
