@@ -1,5 +1,5 @@
-# parse_utils
+# code_utils
 
-[![Build Status](https://travis-ci.org/relayr/erl-parse-utils.svg?branch=master)](https://travis-ci.org/relayr/erl-parse-utils)
+[![Build Status](https://travis-ci.org/relayr/erl-code-utils.svg?branch=master)](https://travis-ci.org/relayr/erl-code-utils)
 
 Erlang Abstract Form manipulating functions.

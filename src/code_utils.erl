@@ -4,7 +4,7 @@
 %% @doc Miscellaneous functions for parsing of Erlang code.
 %% @end
 %%------------------------------------------------------------------------------
--module(parse_utils).
+-module(code_utils).
 
 %%------------------------------------------------------------------------------
 %% Include files
