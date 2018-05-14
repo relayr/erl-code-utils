@@ -45,13 +45,11 @@ string_to_exprs(String) ->
 
 -spec string_to_term(String :: nonempty_string()) -> term().
 string_to_term(String) ->
-    {ok, Scanned, _} = erl_scan:string(String ++ "."),
-    {ok, Parsed} = erl_parse:parse_term(Scanned),
-    Parsed.
+    eval_string(String ++ ".").
 
 -spec term_to_string(Term :: term()) -> nonempty_string().
 term_to_string(Term) ->
-    lists:flatten(io_lib:format("~p", [Term])).
+    lists:flatten(code_transform:traverse(Term)).
 
 -spec eval_exprs(Exprs :: [erl_parse:abstract_expr()]) -> Result :: any().
 eval_exprs(Exprs) ->
