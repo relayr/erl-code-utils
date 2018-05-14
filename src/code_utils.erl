@@ -18,7 +18,9 @@
     string_to_term/1,
     term_to_string/1,
     eval_exprs/1,
-    eval_string/1
+    eval_string/1,
+
+    transform/2
 ]).
 
 %%------------------------------------------------------------------------------
@@ -45,13 +47,11 @@ string_to_exprs(String) ->
 
 -spec string_to_term(String :: nonempty_string()) -> term().
 string_to_term(String) ->
-    {ok, Scanned, _} = erl_scan:string(String ++ "."),
-    {ok, Parsed} = erl_parse:parse_term(Scanned),
-    Parsed.
+    eval_string(String ++ ".").
 
 -spec term_to_string(Term :: term()) -> nonempty_string().
 term_to_string(Term) ->
-    lists:flatten(io_lib:format("~p", [Term])).
+    lists:flatten(transform(Term, fun code_transform:simple_transform/2)).
 
 -spec eval_exprs(Exprs :: [erl_parse:abstract_expr()]) -> Result :: any().
 eval_exprs(Exprs) ->
@@ -62,6 +62,20 @@ eval_exprs(Exprs) ->
 eval_string(String) ->
     Exprs = string_to_exprs(String),
     eval_exprs(Exprs).
+
+%%------------------------------------------------------------------------------
+%% @spec transform(T, F) -> Text
+%% where
+%%		T = term()
+%%		F = code_transform:transform_function()
+%%		Text = list()
+%% @doc Traverses Erlang term, executes transformation F and returns list.
+%%      Example transform function can be found in code_transform:simple_transform/2.
+%% @end
+%%------------------------------------------------------------------------------
+-spec transform(T :: term(), F :: code_transform:transform_function()) -> list().
+transform(T, F) ->
+    code_transform:traverse(T, F).
 
 %% =============================================================================
 %% Local functions
