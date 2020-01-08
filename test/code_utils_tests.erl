@@ -26,16 +26,16 @@ string_to_term_test() ->
 
     ?assertException(error, {unbound_var, 'Var'}, code_utils:string_to_term("{tuple, Var}")).
 
-%term_to_string_test() ->
-%    ?assertEqual("7.1", code_utils:term_to_string(7.1)),
-%    ?assertEqual("{tuple,undefined,3}", code_utils:term_to_string({tuple, undefined, 3})),
-%    ?assertEqual("[\"s1\",null,<<\"b1\">>]", code_utils:term_to_string(["s1",null,<<"b1">>])),
-%    ?assertEqual("{pids,[undefined,c:pid(0,285,3)]}", code_utils:term_to_string({pids, [undefined, c:pid(0,285,3)]})),
-%
-%    ?assertException(error, function_clause, code_utils:term_to_string(fun() -> not_allowed end)).
-%
-%eval_string_test() ->
-%    ?assertEqual(5, code_utils:eval_string("2 + 3.")),
-%    ?assertEqual(["elem", 2, 7], code_utils:eval_string("L1 = [\"elem\"], L2 = [2, 7], lists:append(L1, L2).")).
+term_to_string_test() ->
+    ?assertEqual("7.1", code_utils:term_to_string(7.1)),
+    ?assertEqual("{tuple,undefined,3}", code_utils:term_to_string({tuple, undefined, 3})),
+    ?assertEqual("[\"s1\",null,<<\"b1\">>]", code_utils:term_to_string(["s1",null,<<"b1">>])),
+    ?assertEqual("{pids,[undefined,c:pid(0,285,3)]}", code_utils:term_to_string({pids, [undefined, c:pid(0,285,3)]})),
+
+    ?assertException(error, function_clause, code_utils:term_to_string(fun() -> not_allowed end)).
+
+eval_string_test() ->
+    ?assertEqual(5, code_utils:eval_string("2 + 3.")),
+    ?assertEqual(["elem", 2, 7], code_utils:eval_string("L1 = [\"elem\"], L2 = [2, 7], lists:append(L1, L2).")).
 
 -endif.
