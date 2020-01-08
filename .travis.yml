@@ -1,3 +1,9 @@
 language: erlang
+sudo: false
+before_install: set -e
+after_script: set +e
+script:
+  - rebar3 eunit
+  - rebar3 as test coveralls send
 otp_release:
   - 20.2.2
