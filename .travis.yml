@@ -6,4 +6,4 @@ script:
   - rebar3 eunit
   - rebar3 as test coveralls send
 otp_release:
-  - 20.2.2
+  - 22.0
