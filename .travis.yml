@@ -1,5 +1,4 @@
 language: erlang
-sudo: false
 before_install: set -e
 after_script: set +e
 script:
