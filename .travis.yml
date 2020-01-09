@@ -7,7 +7,7 @@ script:
   - rebar3 as test coveralls send
 deploy:
   provider: script
-  script: rebar3 hex publish
+  script: bash -c 'rebar3 hex publish'
   on:
     tags: true
 otp_release:
