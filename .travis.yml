@@ -5,5 +5,10 @@ script:
   - rebar3 eunit --cover
   - rebar3 cover --verbose
   - rebar3 as test coveralls send
+deploy:
+  provider: script
+  script: rebar3 hex publish
+  on:
+    tags: true
 otp_release:
   - 22.0
