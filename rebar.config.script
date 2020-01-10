@@ -1,7 +1,23 @@
 case os:getenv("TRAVIS") of
   "true" ->
     JobId   = os:getenv("TRAVIS_JOB_ID"),
-    lists:keystore(coveralls_service_job_id, 1, CONFIG, {coveralls_service_job_id, JobId});
+    CONFIG1 = lists:keystore(coveralls_service_job_id, 1, CONFIG, {coveralls_service_job_id, JobId}),
+    CONFIG2 = lists:keystore(coveralls_service_name, 1, CONFIG1, {coveralls_service_name, "travis-ci"}),
+    CONFIG3 = lists:keystore(coveralls_coverdata, 1, CONFIG2, {coveralls_coverdata, "_build/test/cover/*.coverdata"}),
+    CONFIG4 = lists:keystore(cover_export_enabled, 1, CONFIG3, {cover_export_enabled, true}),
+    PROFILES1 = proplists:get_value(profiles, CONFIG4, []),
+    TEST_PROFILE_CONFIG1 = proplists:get_value(test, PROFILES1, []),
+    TEST_PLUGINS1 = proplists:get_value(plugins, TEST_PROFILE_CONFIG1, []),
+    TEST_PLUGINS2 =
+        case lists:member(coveralls, TEST_PLUGINS1) or lists:keymember(coveralls, 1, TEST_PLUGINS1) of
+            true ->
+                TEST_PLUGINS1;
+            false ->
+                TEST_PLUGINS1 ++ [coveralls]
+        end,
+    TEST_PROFILE_CONFIG2 = lists:keystore(plugins, 1, TEST_PROFILE_CONFIG1, {plugins, TEST_PLUGINS2}),
+    PROFILES2 = lists:keystore(test, 1, PROFILES1, {test, TEST_PROFILE_CONFIG2}),
+    lists:keystore(profiles, 1, CONFIG4, {profiles, PROFILES2});
   _ ->
     CONFIG
 end.
