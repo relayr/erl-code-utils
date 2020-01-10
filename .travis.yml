@@ -1,4 +1,6 @@
 language: erlang
+otp_release:
+  - 22.0
 before_install: set -e
 after_script: set +e
 script:
@@ -7,9 +9,7 @@ script:
   - rebar3 as test coveralls send
 deploy:
   provider: script
-  script: rebar3 hex publish
+  script: rebar3 hex publish --yes
   skip_cleanup: true
   on:
     tags: true
-otp_release:
-  - 22.0
