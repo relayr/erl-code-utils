@@ -19,7 +19,8 @@
 %% Types
 %%------------------------------------------------------------------------------
 -type transform_value_type():: atom | number | pid.
--type transform_action()    :: list_start | list_stop | binary_start | binary_stop | tuple_start | tuple_stop | {value, transform_value_type()}.
+-type transform_action()    :: list_start | list_stop | binary_start | binary_stop | tuple_start | tuple_stop |
+                               map_start | map_stop | {value, transform_value_type()}.
 -type transform_output()    :: {go, integer() | list(), list()} | {stop, list()} | integer() | list().
 
 -type transform_function()  :: fun((Action :: transform_action(), Term :: term()) -> transform_output()).
