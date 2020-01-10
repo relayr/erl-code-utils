@@ -1,6 +1,6 @@
 {application,code_utils,
              [{description,"Erlang Abstract Form parsing functions"},
-              {vsn, "1.0.12"},
+              {vsn, "1.0.13"},
               {licenses,["MIT"]},
               {links,[{"GitHub","https://github.com/relayr/erl-code-utils"}]},
               {applications,[kernel,stdlib]}]}.
