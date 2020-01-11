@@ -9,7 +9,7 @@ script:
   - rebar3 as test coveralls send
 deploy:
   provider: script
-  script: rebar3 hex publish --yes
+  script: rebar3 hex publish --repo hexpm --yes
   skip_cleanup: true
   on:
     tags: true
