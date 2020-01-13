@@ -6,6 +6,8 @@ case os:getenv("TRAVIS") of
     CONFIG3 = lists:keystore(coveralls_coverdata, 1, CONFIG2, {coveralls_coverdata, "_build/test/cover/*.coverdata"}),
     CONFIG4 = lists:keystore(cover_export_enabled, 1, CONFIG3, {cover_export_enabled, true}),
     PROFILES1 = proplists:get_value(profiles, CONFIG4, []),
+    PLUGINS1 = proplists:get_value(plugins, CONFIG4, []),
+    PLUGINS2 = PLUGINS1 ++ [rebar3_hex],
     TEST_PROFILE_CONFIG1 = proplists:get_value(test, PROFILES1, []),
     TEST_PLUGINS1 = proplists:get_value(plugins, TEST_PROFILE_CONFIG1, []),
     TEST_PLUGINS2 =
@@ -17,7 +19,8 @@ case os:getenv("TRAVIS") of
         end,
     TEST_PROFILE_CONFIG2 = lists:keystore(plugins, 1, TEST_PROFILE_CONFIG1, {plugins, TEST_PLUGINS2}),
     PROFILES2 = lists:keystore(test, 1, PROFILES1, {test, TEST_PROFILE_CONFIG2}),
-    lists:keystore(profiles, 1, CONFIG4, {profiles, PROFILES2});
+    CONFIG5 = lists:keystore(profiles, 1, CONFIG4, {profiles, PROFILES2}),
+    lists:keystore(plugins, 1, CONFIG5, {plugins, PLUGINS2});
   _ ->
     CONFIG
 end.
