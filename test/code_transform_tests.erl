@@ -17,8 +17,8 @@
 %% =============================================================================
 
 traverse_simple_transform_test() ->
-    Term = [{<<>>, <<1,2,3,4,5,6,7,8,9>>, "", "bbb", ccc, 123, {}}],
-    Text = "[{<<>>,<<1,2,3,4,5,6,7,8,9>>,[],\"bbb\",ccc,123,{}}]",
+    Term = [{<<>>, <<1,2,3,4,5,6,7,8,9>>, "", "bbb", ccc, 123, {}, #{}, #{k1 => v1, k2 => "s2", k3 => 3}}],
+    Text = "[{<<>>,<<1,2,3,4,5,6,7,8,9>>,[],\"bbb\",ccc,123,{},#{},#{k1=>v1,k2=>\"s2\",k3=>3}}]",
     ?assertEqual(Text, lists:flatten(code_transform:traverse(Term, fun code_transform:simple_transform/2))).
 
 -endif.
