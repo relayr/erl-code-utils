@@ -1,0 +1,3 @@
+[submodule ".rebar3"]
+	path = .rebar3
+	url = https://github.com/relayr/erl-rebar-config.git
