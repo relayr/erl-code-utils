@@ -2,7 +2,7 @@ language: erlang
 otp_release:
   - 22.0
 before_install: set -e
-before_script: cp .rebar3/rebar.config.script .
+before_script: cp .travis/rebar.config.script .
 after_script: set +e
 script:
   - rebar3 eunit --cover
