@@ -1,16 +1,11 @@
 language: erlang
 otp_release:
   - 22.0
-before_install: set -e
 before_script: cp .travis/rebar.config.script .
-after_script: set +e
-script:
-  - rebar3 eunit --cover
-  - rebar3 cover --verbose
-  - rebar3 as test coveralls send
+script: .travis/build.sh
 deploy:
   provider: script
-  script: rebar3 hex publish --repo hexpm --yes
+  script: .travis/deploy.sh
   skip_cleanup: true
   on:
     tags: true
