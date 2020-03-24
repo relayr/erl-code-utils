@@ -1,6 +1,6 @@
 # code_utils
 
-![Build Status](https://github.com/relayr/erl-code-utils/workflows/Erlang%20CI/badge.svg) [![Hex.pm](https://img.shields.io/hexpm/v/code_utils.svg?style=flat)](https://hex.pm/packages/code_utils) [![Coverage Status](https://coveralls.io/repos/github/relayr/erl-code-utils/badge.svg?branch=master)](https://coveralls.io/github/relayr/erl-code-utils?branch=master)
+[![Build Status](https://img.shields.io/github/workflow/status/relayr/erl-code-utils/Erlang%20CI)](https://github.com/relayr/erl-code-utils/actions?query=workflow%3A%22Erlang+CI%22) [![Hex.pm](https://img.shields.io/hexpm/v/code_utils.svg?style=flat)](https://hex.pm/packages/code_utils) [![Coverage Status](https://coveralls.io/repos/github/relayr/erl-code-utils/badge.svg?branch=master)](https://coveralls.io/github/relayr/erl-code-utils?branch=master)
 
 Functions useful for evaluating Erlang code and manipulating of [Erlang abstract format](http://erlang.org/doc/apps/erts/absform.html).
 
