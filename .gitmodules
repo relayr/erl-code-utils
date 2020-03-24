@@ -1,6 +1,6 @@
 [submodule ".travis"]
 	path = .travis
 	url = https://github.com/relayr/erl-travis-scripts.git
-[submodule ".github"]
-	path = .github
+[submodule ".github/scripts"]
+	path = .github/scripts
 	url = https://github.com/relayr/erl-github-actions
